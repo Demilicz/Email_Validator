@@ -4,7 +4,7 @@
     <router-link :to="{name: 'Registration'}">Registration</router-link> |
     <router-link :to="{name: 'Login'}">Login</router-link>
   </div>
-  <router-view/>
+    <router-view/>
 </template>
 
 <style lang="scss">
