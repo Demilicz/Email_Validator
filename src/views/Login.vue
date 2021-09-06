@@ -7,7 +7,7 @@
       <input type="password" placeholder="Enter your password" >
       <p v-if="wrongpassword">Password must be alphanumeric (@ , _ and are also allowed) and be 8-20 characters</p>
     </form>
-    <button>Log In</button>
+    <button @click="type">Log In</button>
   </div>
 </template>
 
@@ -16,7 +16,14 @@
     data: () => ({
       wronguser: false,
       wrongpassword: false,
-    })
+    }),
+    methods: {
+      type () {
+
+        console.log(this);
+
+      }
+    }
   }
 </script>
 
