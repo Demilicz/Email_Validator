@@ -19,6 +19,22 @@
       <p>Telephon must be a valid telphone number 11 digits</p>
 
     </form>
-    <button>Log In</button>
+    <button @click="click">Confirm</button>
   </div>
 </template>
+
+
+
+<script lang="ts">
+
+  import validation from '../objects/validation';
+
+  export default {
+    methods: {
+      click() {
+        console.log(validation);
+
+      }
+    }
+  }
+</script>
