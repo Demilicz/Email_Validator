@@ -2,7 +2,7 @@
   <div class="registration">
     <h2>New User Signup</h2>
     <form action="#">
-      <input type="name" name="name" @keyup="validName" placeholder="Enter your fullname" >
+      <input type="name" name="name" @keyup="validName($event)" placeholder="Enter your fullname" >
       <p>Firstname and lastname must be alphanumeric and contains 5-12 characters</p>
 
       <input type="nickname" name="kickname" placeholder="Enter your nickname" >
@@ -39,8 +39,10 @@
       telephon: null
     }),
     methods: {
-      validName() {
-       console.log(validation);
+      validName(e: Event) {
+
+       let input = (e.target as any).attributes.name.value;
+        console.log(input);
 
       }
 
