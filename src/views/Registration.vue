@@ -2,14 +2,14 @@
   <div class="registration">
     <h2>New User Signup</h2>
     <form action="#">
-      <input type="name" name="name" @keyup="validName($event)" placeholder="Enter your fullname" >
-      <p>Firstname and lastname must be alphanumeric and contains 5-12 characters</p>
+      <input type="name" name="name" @keyup="validName" placeholder="Enter your fullname" >
+      <p>Firstname and lastname must be alphanumeric and contains 5-12 characters {{name}}</p>
 
       <input type="nickname" name="kickname" placeholder="Enter your nickname" >
       <p>Nickname must be alphanumeric and contains 5-12 characters</p>
 
       <input type="email" name="email" placeholder="Enter your email" >
-      <p>Email must be valid address e.g.  me@mydomain.com</p>
+      <p>Email must be valid address e.g. me@mydomain.com</p>
 
       <input type="password" name="password" placeholder="Enter your password" >
       <input type="password" name="cheakPassword" placeholder="Repeat your password" >
@@ -31,18 +31,20 @@
 
   export default {
     data: () =>({
-      name: null,
-      nickname: null,
-      email: null,
-      password: null,
-      cheakPassword: null,
-      telephon: null
+      name: '',
+      nickname: '',
+      email: '',
+      password: '',
+      cheakPassword: '',
+      telephon: ''
     }),
     methods: {
-      validName(e: Event) {
+      validName(v: string) {
 
-       let input = (e.target as any).attributes.name.value;
-        console.log(input);
+        // let isValid = validation.fullname.test();
+
+
+
 
       }
 
