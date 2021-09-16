@@ -3,9 +3,9 @@
     <h2>Welcome back. log in here.</h2>
     <form action="#">
       <input type="username" placeholder="Enter your username" >
-      <p v-if="wronguser">Username must be alphanumeric and contains 5-12 characters</p>
+      <p v-if="userError">Username must be alphanumeric and contains 5-12 characters</p>
       <input type="password" placeholder="Enter your password" >
-      <p v-if="wrongpassword">Password must be alphanumeric (@ , _ and are also allowed) and be 8-20 characters</p>
+      <p v-if="passwordError">Password must be alphanumeric (@ , _ and are also allowed) and be 8-20 characters</p>
     </form>
     <button>Log In</button>
   </div>
@@ -14,8 +14,8 @@
 <script lang="ts">
   export default {
     data: () => ({
-      wronguser: false,
-      wrongpassword: false,
+      userError: false,
+      passwordError: false,
     }),
     methods: {
 
