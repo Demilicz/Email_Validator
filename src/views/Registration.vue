@@ -35,10 +35,27 @@
       <p>Email must be valid address e.g. me@mydomain.com</p>
 
 
-      <input type="password" class="pasInput" name="password" placeholder="Enter your password" >
-      <input type="password" class="pasInput" name="cheakPassword" placeholder="Repeat your password" >
+      <input
+      type="password"
+      :class="colorPassword"
+      class="pasInput"
+      name="password"
+      v-model="inputValue.password"
+      placeholder="Enter your password"
+      @keyup="validPassword"
+      required>
 
-      <p v-if="isDifferentPass" class="error">Password should be the same in both inputs!</p>
+      <input
+      type="password"
+      :class="colorPassword"
+      class="pasInput"
+      name="cheakPassword"
+      v-model="inputValue.cheakPassword"
+      placeholder="Repeat your password"
+      @keyup="validPassword"
+      required>
+
+      <p v-if="isDifferentPass" class="error">Password must be the same in both inputs!</p>
       <p>Password must be alphanumeric (@ , _ and are also allowed) and be 8-20 characters</p>
 
       <input
@@ -75,7 +92,6 @@
         cheakPassword: '',
         telephone: ''
       },
-
       isDifferentPass: false,
 
       isValidInputs: {
@@ -85,7 +101,6 @@
         password: false,
         cheakPassword: false,
         telephone: false
-
       }
 
     }),
@@ -114,7 +129,25 @@
         let isValid = validation.email.test(this.inputValue.email);
 
         this.isValidInputs.email = isValid;
+      },
+      validPassword () {
+
+        if(this.inputValue.password != this.inputValue.cheakPassword){
+
+          this.isDifferentPass = true;
+
+          return;
+        }
+
+        this.isDifferentPass = false;
+
+        let isValid = validation.password.test(this.inputValue.password);
+        let isValidCheak = validation.password.test(this.inputValue.cheakPassword);
+
+        this.isValidInputs.cheakPassword = isValidCheak;
+        this.isValidInputs.password = isValid;
       }
+
 
 
     },
@@ -159,8 +192,19 @@
         }
         else
             return "errorInput";
-      }
+      },
+      colorPassword() {
+      if (this.inputValue.password === "" &&  this.inputValue.cheakPassword === "") {
+          return;
+        }
+        if (this.isValidInputs.password) {
+          return "validPass";
+        }
+        else
+            return "errorPass";
     }
+    },
+
   })
 </script>
 
@@ -180,11 +224,57 @@
       border: 2px solid #a9c9c7;
       border-radius: 3px;
     }
+
     .pasInput {
       padding: 4px 6px;
       width: 192px;
       height: 30px;
+      border-right: 2px solid #a9c9c7;
+      border-top: 2px solid #a9c9c7;
+      border-bottom: 2px solid #a9c9c7;
+      border-left: 1px solid #a9c9c7;
+      border-radius: 0px 3px 3px 0px;
       margin: 5px 0;
+      &:nth-child(odd){
+        border-top: 2px solid #a9c9c7;
+        border-bottom: 2px solid #a9c9c7;
+        border-left: 2px solid #a9c9c7;
+        border-right: 1px solid #a9c9c7;
+        border-radius: 3px 0px 0px 3px;
+      }
+
+    }
+
+    .errorPass {
+      border-right: 2px solid red;
+      border-top: 2px solid red;
+      border-bottom: 2px solid red;
+      border-left: 1px solid red;
+      border-radius: 0px 3px 3px 0px;
+      margin: 5px 0;
+      &:nth-child(odd){
+        border-top: 2px solid red;
+        border-bottom: 2px solid red;
+        border-left: 2px solid red;
+        border-right: 1px solid red;
+        border-radius: 3px 0px 0px 3px;
+      }
+    }
+
+    .validPass {
+      border-right: 2px solid #0be064;
+      border-top: 2px solid #0be064;
+      border-bottom: 2px solid #0be064;
+      border-left: 1px solid #0be064;
+      border-radius: 0px 3px 3px 0px;
+      margin: 5px 0;
+      &:nth-child(odd){
+        border-top: 2px solid #0be064;
+        border-bottom: 2px solid #0be064;
+        border-left: 2px solid #0be064;
+        border-right: 1px solid #0be064;
+        border-radius: 3px 0px 0px 3px;
+      }
     }
 
     p {
