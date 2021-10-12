@@ -4,7 +4,6 @@
     <form action="#">
       <input
       type="name"
-      class="input"
       :class="colorFullname"
       v-model="inputValue.fullname"
       @keyup="validName"
@@ -15,7 +14,6 @@
       <input
       type="nickname"
       :class="colorNickname"
-      class="input"
       name="nickname"
       v-model="inputValue.nickname"
       @keyup="validNick"
@@ -26,7 +24,6 @@
       <input
       type="email"
       :class="colorEmail"
-      class="input"
       name="email"
       v-model="inputValue.email"
       placeholder="Enter your email"
@@ -61,7 +58,6 @@
       <input
       type="telephon"
       :class="colorTelephone"
-      class="input"
       name="telephon"
       v-model="inputValue.telephone"
       @keyup="validNumber"
@@ -216,7 +212,7 @@
     max-width: 420px;
     margin: 20px auto;
 
-    .input {
+    input {
       padding: 4px 6px;
       width: 400px;
       height: 30px;
@@ -293,6 +289,14 @@
     }
 
   }
-
+  button {
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+    color: #fff;
+    background: #4a08d1;
+    border: 1px solid #4a08d1;
+    border-radius: 2px;
+  }
 
 </style>
